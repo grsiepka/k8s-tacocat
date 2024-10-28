@@ -7,15 +7,15 @@ metadata:
   namespace: gene
 spec:
   progressDeadlineSeconds: 600
-  replicas: 6
+  replicas: 2
   revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: taconginx
   strategy:
     rollingUpdate:
-      maxSurge: 0
-      maxUnavailable: 1
+      maxSurge: 1
+      maxUnavailable: 0
     type: RollingUpdate
   template:
     metadata:
@@ -23,7 +23,7 @@ spec:
         app: taconginx
     spec:
       containers:
-      - image: registry.bingahead.com:5555/taconginx
+      - image: us-east4-docker.pkg.dev/cool-project-2-405901/cool-registry/taco-nginx:1.0
         imagePullPolicy: Always
         name: taconginx1
         ports:

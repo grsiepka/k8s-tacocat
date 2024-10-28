@@ -3,10 +3,11 @@ kind: Ingress
 metadata:
   name: taco-ingress
   namespace: gene
+  annotations: 
+    kubernetes.io/ingress.allow-http: "true"
 spec:
   rules:
-  - host: taco.apps.bingahead.com
-    http:
+  - http:
       paths:
       - pathType: Prefix
         path: /
@@ -14,4 +15,4 @@ spec:
           service: 
             name: tacoservice
             port: 
-              number: 80
+              number: 8080
